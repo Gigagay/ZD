@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ZARS Digital helps small businesses increase revenue through optimized websites, social media, and digital strategies.">
+  <title>ZAROS Digital - Fuel Your Business Growth</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #9b5bff;
+      --primary-light: #b08aff;
+      --primary-dark: #7a3dcc;
+      --dark-bg: #000;
+      --dark-section: #0a0a0a;
+      --dark-card: #1a1a1a;
+      --text: #eaeaea;
+      --text-light: #aaaaaa;
+      --border: #2b2b2b;
+      --success: #5bffa1;
+      --shadow: rgba(155, 91, 255, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Header & Navigation */
+    header {
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 1.2rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .logo {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: white;
+    }
+    
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--primary), var(--primary-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+    
+    nav a:hover {
+      color: var(--primary-light);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+      padding: 6rem 2rem;
+      text-align: center;
+      background: radial-gradient(ellipse at center, #1a0a2e 0%, var(--dark-bg) 70%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: var(--primary);
+      filter: blur(100px);
+      opacity: 0.1;
+      top: 10%;
+      right: 10%;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, var(--primary), var(--primary-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.2;
+    }
+    
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      font-size: 1.2rem;
+      color: var(--text-light);
+    }
+    
+    .highlight {
+      color: var(--primary-light);
+      font-weight: 600;
+    }
+    
+    .cta-btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px var(--shadow);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+    
+    .cta-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .cta-btn:hover::after {
+      opacity: 1;
+    }
+    
+    /* Services Section */
+    .services {
+      padding: 6rem 2rem;
+      background-color: var(--dark-section);
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+    
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .service-card {
+      background-color: var(--dark-card);
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    
+    .service-card p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+    
+    .service-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.3s;
+    }
+    
+    .service-link:hover {
+      gap: 1rem;
+    }
+    
+    /* Stats Section */
+    .stats {
+      padding: 5rem 2rem;
+      background-color: var(--dark-bg);
+    }
+    
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .stat-box {
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-text {
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+    
+    /* PRICING SECTION */
+    .pricing {
+      padding: 6rem 2rem;
+      background-color: var(--dark-section);
+    }
+    
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 4rem auto 0;
+    }
+    
+    .pricing-card {
+      background-color: var(--dark-card);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .pricing-card.popular {
+      border: 2px solid var(--primary);
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(155, 91, 255, 0.2);
+    }
+    
+    .popular-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 0.5rem 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-bottom-left-radius: 8px;
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+    
+    .pricing-card.popular:hover {
+      transform: scale(1.05) translateY(-10px);
+    }
+    
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .pricing-title {
+      font-size: 1.8rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    
+    .pricing-desc {
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+    
+    .price-amount {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 1rem 0;
+    }
+    
+    .price-period {
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+    
+    .currency {
+      font-size: 1.5rem;
+      vertical-align: super;
+      color: var(--text-light);
+    }
+    
+    .pricing-features {
+      list-style: none;
+      margin: 2rem 0;
+    }
+    
+    .pricing-features li {
+      padding: 0.8rem 0;
+      color: var(--text-light);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+    
+    .feature-check {
+      color: var(--success);
+      font-size: 1.1rem;
+    }
+    
+    .pricing-btn {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      margin-top: 2rem;
+    }
+    
+    .pricing-btn:hover {
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px var(--shadow);
+    }
+    
+    .pricing-btn.secondary {
+      background: transparent;
+      border: 2px solid var(--primary);
+    }
+    
+    .pricing-btn.secondary:hover {
+      background: var(--primary);
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      padding: 5rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(155, 91, 255, 0.1), rgba(0, 0, 0, 0.9));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    
+    .cta-section p {
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      color: var(--text-light);
+      font-size: 1.1rem;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: #000;
+      padding: 4rem 2rem 2rem;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+    }
+    
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, var(--primary), var(--primary-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .footer-about p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links h3, .footer-contact h3 {
+      color: #fff;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    .footer-contact p {
+      color: var(--text-light);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: var(--dark-card);
+      color: var(--text);
+      border-radius: 50%;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .social-links a:hover {
+      background-color: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+      
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+        border-top: 1px solid var(--border);
+      }
+      
+      nav.active ul {
+        display: flex;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .stat-number {
+        font-size: 2.5rem;
+      }
+      
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .pricing-card.popular {
+        transform: none;
+      }
+      
+      .pricing-card.popular:hover {
+        transform: translateY(-10px);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero {
+        padding: 4rem 1rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .services, .stats, .pricing, .cta-section {
+        padding: 4rem 1rem;
+      }
+      
+      .stats-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer {
+        padding: 3rem 1rem 1rem;
+      }
+      
+      .price-amount {
+        font-size: 2.5rem;
+      }
+    }
+    
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in {
+      animation: fadeInUp 0.8s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <div class="logo-container">
+      <!-- LOGO PLACEHOLDER - REPLACE THIS WITH THE RIGHT LOGO YOU MAMPARA -->
+      <img src="Logo-placeholder.jpg" alt="ZAROS Digital Logo" class="logo-img">
+      <div class="logo-text">ZAR0S DIGITAL</div>
+    </div>
+    
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <nav id="mainNav">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero fade-in" id="home">
+    <h1>Fuel Your Business Growth</h1>
+    <p>
+      <span class="highlight">ZARS Digital</span> helps small businesses increase revenue through optimized websites, stronger social media presence, and digital strategies designed to attract customers and boost sales.
+    </p>
+    <a class="cta-btn" href="https://wa.me/27812192787" target="_blank">
+      <i class="fab fa-whatsapp"></i> Book a Free Consultation
+    </a>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <h2 class="section-title">What We Do</h2>
+    <p class="section-subtitle">Comprehensive digital solutions tailored to help your business thrive in the digital age.</p>
+    
+    <div class="service-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+        <h3>Website Optimization</h3>
+        <p>We analyze and upgrade your website to improve performance, aesthetics, and conversions for maximum impact.</p>
+        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <i class="fas fa-hashtag"></i>
+        </div>
+        <h3>Social Media Enhancement</h3>
+        <p>Grow your online presence with strategic posting, branding, and engagement tactics that drive real results.</p>
+        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <i class="fas fa-palette"></i>
+        </div>
+        <h3>Brand Identity Development</h3>
+        <p>Create a recognizable and trustworthy brand that resonates with your target audience across all platforms.</p>
+        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+      
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>Digital Strategy Consulting</h3>
+        <p>Get expert guidance tailored to your business goals to maximize growth opportunities and ROI.</p>
+        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="stats-container">
+      <div class="stat-box fade-in">
+        <div class="stat-number">50+</div>
+        <div class="stat-text">Clients Empowered</div>
+      </div>
+      
+      <div class="stat-box fade-in">
+        <div class="stat-number">200%</div>
+        <div class="stat-text">Avg. ROI Increase</div>
+      </div>
+      
+      <div class="stat-box fade-in">
+        <div class="stat-number">24/7</div>
+        <div class="stat-text">Support Available</div>
+      </div>
+      
+      <div class="stat-box fade-in">
+        <div class="stat-number">100%</div>
+        <div class="stat-text">Client Satisfaction</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW PRICING SECTION -->
+  <section class="pricing" id="pricing">
+    <h2 class="section-title">Transparent Pricing</h2>
+    <p class="section-subtitle">Affordable packages designed for South African small businesses. All prices in ZAR (R).</p>
+    
+    <div class="pricing-grid">
+      <!-- Starter Package -->
+      <div class="pricing-card fade-in">
+        <div class="pricing-header">
+          <h3 class="pricing-title">Starter</h3>
+          <p class="pricing-desc">Perfect for businesses just starting their digital journey</p>
+          <div class="price-amount"><span class="currency">R</span>1,999<span class="price-period">/month</span></div>
+        </div>
+        
+        <ul class="pricing-features">
+          <li><i class="fas fa-check feature-check"></i> Basic Website Audit & Report</li>
+          <li><i class="fas fa-check feature-check"></i> Social Media Profile Setup (2 platforms)</li>
+          <li><i class="fas fa-check feature-check"></i> 4 Social Media Posts per Month</li>
+          <li><i class="fas fa-check feature-check"></i> Monthly Performance Report</li>
+          <li><i class="fas fa-check feature-check"></i> Email Support</li>
+        </ul>
+        
+        <a href="https://wa.me/27812192787?text=I'm interested in the Starter package (R1999/month)" target="_blank" class="pricing-btn secondary">
+          Get Started
+        </a>
+      </div>
+      
+      <!-- Growth Package (Most Popular) -->
+      <div class="pricing-card popular fade-in">
+        <div class="popular-badge">MOST POPULAR</div>
+        <div class="pricing-header">
+          <h3 class="pricing-title">Growth</h3>
+          <p class="pricing-desc">Ideal for businesses ready to scale their online presence</p>
+          <div class="price-amount"><span class="currency">R</span>3,999<span class="price-period">/month</span></div>
+        </div>
+        
+        <ul class="pricing-features">
+          <li><i class="fas fa-check feature-check"></i> Everything in Starter</li>
+          <li><i class="fas fa-check feature-check"></i> Comprehensive Website Optimization</li>
+          <li><i class="fas fa-check feature-check"></i> 8 Social Media Posts per Month</li>
+          <li><i class="fas fa-check feature-check"></i> Basic Content Creation (Graphics & Copy)</li>
+          <li><i class="fas fa-check feature-check"></i> Monthly Strategy Session (1 hour)</li>
+          <li><i class="fas fa-check feature-check"></i> Priority Support</li>
+          <li><i class="fas fa-check feature-check"></i> Google Business Profile Optimization</li>
+        </ul>
+        
+        <a href="https://wa.me/27812192787?text=I'm interested in the Growth package (R3999/month)" target="_blank" class="pricing-btn">
+          Choose Growth
+        </a>
+      </div>
+      
+      <!-- Premium Package -->
+      <div class="pricing-card fade-in">
+        <div class="pricing-header">
+          <h3 class="pricing-title">Premium</h3>
+          <p class="pricing-desc">Complete digital transformation for serious growth</p>
+          <div class="price-amount"><span class="currency">R</span>6,999<span class="price-period">/month</span></div>
+        </div>
+        
+        <ul class="pricing-features">
+          <li><i class="fas fa-check feature-check"></i> Everything in Growth</li>
+          <li><i class="fas fa-check feature-check"></i> Full Brand Identity Development</li>
+          <li><i class="fas fa-check feature-check"></i> 15 Social Media Posts per Month</li>
+          <li><i class="fas fa-check feature-check"></i> Advanced Content Creation & Graphics</li>
+          <li><i class="fas fa-check feature-check"></i> Weekly Strategy Check-ins</li>
+          <li><i class="fas fa-check feature-check"></i> Basic SEO Implementation</li>
+          <li><i class="fas fa-check feature-check"></i> Monthly Competitor Analysis</li>
+          <li><i class="fas fa-check feature-check"></i> 24/7 Priority Support</li>
+        </ul>
+        
+        <a href="https://wa.me/27812192787?text=I'm interested in the Premium package (R6999/month)" target="_blank" class="pricing-btn secondary">
+          Go Premium
+        </a>
+      </div>
+    </div>
+    
+    <!-- Custom Package Option -->
+    <div class="custom-package fade-in" style="text-align: center; margin-top: 4rem; padding: 2rem; background-color: rgba(155, 91, 255, 0.05); border-radius: 12px; border: 1px solid var(--border); max-width: 800px; margin-left: auto; margin-right: auto;">
+      <h3 style="color: var(--primary-light); margin-bottom: 1rem; font-size: 1.8rem;">Need a Custom Solution?</h3>
+      <p style="color: var(--text-light); margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">We understand every business is unique. Contact us for a tailored package that fits your specific needs and budget.</p>
+      <a href="https://wa.me/27812192787?text=I'd like to discuss a custom package for my business" target="_blank" class="cta-btn" style="display: inline-block;">
+        <i class="fas fa-comments"></i> Request Custom Quote
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact">
+    <h2>Ready to Transform Your Digital Presence?</h2>
+    <p>Book a free consultation today and discover how ZARS Digital can help you achieve measurable growth and success.</p>
+    <a class="cta-btn" href="https://wa.me/27812192787" target="_blank">
+      <i class="fab fa-whatsapp"></i> Start Your Journey Now
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-about">
+        <div class="footer-logo">ZAROS DIGITAL</div>
+        <p>Helping small businesses grow through strategic digital solutions and optimized online presence.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-phone-alt"></i> +27 81 219 2787</p>
+        <p><i class="fas fa-envelope"></i> info@zarsdigital.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Cape Town, South Africa</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      © 2025 ZAROS Digital — Helping Small Businesses Grow. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mainNav = document.getElementById('mainNav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+      mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking a link
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe elements for scroll animations
+    document.querySelectorAll('.service-card, .stat-box, .pricing-card, .custom-package').forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
